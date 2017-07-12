@@ -13,19 +13,25 @@ class House
     'the malt that lay in',
     'the house that Jack built']
 
+  attr_reader :data
+
+  def initialize
+    @data = DATA
+  end
+
   def recite
     1.upto(12).collect {|i| line(i)}.join("\n")
   end
 
   def line(num)
-    "This is #{phrase(num)}.\n"
+    "#{prefix} #{phrase(num)}.\n"
+  end
+
+  def prefix
+    "This is"
   end
 
   def phrase(num)
     data.last(num).join(' ')
-  end
-
-  def data
-    DATA
   end
 end
